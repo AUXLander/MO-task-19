@@ -42,7 +42,7 @@ for(let i = 1; i < 4; i++)
                 }
             }
     
-            optimized[i][x] = {value : max_val, step_u1, step_u2};
+            optimized[i][x] = {value : max_val, step_u1, step_u2, next : x - step_u1 - step_u2 + c1(step_u1) + c2(step_u2)};
         }
         
         return optimized[i][x];
@@ -53,9 +53,9 @@ for(let i = 1; i < 4; i++)
 S[1](50)
 S[1](100)
 
-var node = {step_u1:400};
+var node = {next:400};
 for(var i = 3; i >= 0; i--)
 {
     console.log(node)
-    node = S[i](node.step_u1);
+    node = S[i](node.next);
 }

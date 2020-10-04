@@ -26,23 +26,23 @@ for(let i = 1; i < 4; i++)
         if(optimized[i][x] === undefined)
         {
             var res = (u1, u2) => f1[xtof(u1)] + f2[xtof(u2)] + S[i - 1](x - u1 - u2 + c1(u1) + c2(u2)).value;
-            var max = res(0, roud(x));
 
+            var max_val = res(0, roud(x));
             var step_u1 = 0;
             var step_u2 = roud(x);
             
             for(var step = 50; step < x; step += 50)
             {   
-                let s = res(roud(step), roud(x - step));
-                if(s > max)
+                let record = res(roud(step), roud(x - step));
+                if (record > max_val)
                 {
-                    max = s;
+                    max_val = record;
                     step_u1 = step;
                     step_u2 = roud(x - step);
                 }
             }
     
-            optimized[i][(() => x)()] = {value : max, step_u1, step_u2};
+            optimized[i][(() => x)()] = {value : max_val, step_u1, step_u2};
         }
         
         return optimized[i][x];

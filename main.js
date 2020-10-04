@@ -42,13 +42,14 @@ for(let i = 1; i < 4; i++)
                 }
             }
     
-            optimized[i][(() => x)()] = {value : max_val, step_u1, step_u2};
+            optimized[i][x] = {value : max_val, step_u1, step_u2};
         }
         
         return optimized[i][x];
     };
 
 }
+
 S[1](50)
 S[1](100)
 
